@@ -1,6 +1,6 @@
 {
     "name": "yulia633/calculator-php",
-    "description": "A compiler called Egg",
+    "description": "A calculator-php",
     "type": "project",
     "keywords": [
         "calculator",
@@ -13,9 +13,6 @@
         }
     ],
     "autoload": {
-        "files": [
-            "src/Parsers.php"
-        ],
         "psr-4": {
             "App\\": "src",
             "Tests\\": "tests"
