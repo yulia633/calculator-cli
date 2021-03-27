@@ -11,6 +11,12 @@ class Calculator
     private array $operations;
 
     /**
+     * @var array $validationData
+     */
+    protected $validationData = [];
+
+
+    /**
      *  Инициализируем стеки.
      */
     public function __construct()
@@ -46,6 +52,10 @@ class Calculator
         $tokens[] = "\n";
 
         foreach ($tokens as $token) {
+            if ($this->validate($token) && $token !== "\n") {
+                $this->print('Неверное значение символа, введите цифры или одну из следующих операций: + , -, *, /');
+            }
+
             $this->handleToken($token);
         }
 
@@ -125,5 +135,27 @@ class Calculator
         $operation = $this->operatorStack->pop();
 
         return $this->operations[$operation]['operation']($secondNumber, $firstNumber);
+    }
+
+    /**
+     * Проверяет регуляркой на соответсвие
+     * ожидаемым символам + , -, *, /, (, )
+     * @param string $string
+     * @return bool
+     */
+    protected function validate(string $string): bool
+    {
+        preg_match('/^(([0-9]|\-|\+|\*|\/|\(|\)|) *)*/', $string, $this->validationData);
+
+        return empty($this->validationData[0]);
+    }
+
+     /**
+     * Печатает сообщение
+     * @param string $msg
+     */
+    protected function print(string $msg): void
+    {
+        echo $msg . PHP_EOL;
     }
 }
