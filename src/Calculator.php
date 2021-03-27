@@ -21,6 +21,25 @@ class Calculator
             '+' => fn(float $firstNumber, float $secondNumber) => $firstNumber + $secondNumber,
             '-' => fn(float $firstNumber, float $secondNumber) => $firstNumber - $secondNumber,
         ];
+
+        $this->operations = [
+            '+' => [
+                'operation' => fn(float $firstNumber, float $secondNumber) => $firstNumber + $secondNumber,
+                'priority' => 1,
+            ],
+            '-' => [
+                'operation' => fn(float $firstNumber, float $secondNumber) => $firstNumber - $secondNumber,
+                'priority' => 1,
+            ],
+            '*' => [
+                'operation' => fn(float $firstNumber, float $secondNumber) => $firstNumber * $secondNumber,
+                'priority' => 2,
+            ],
+            '/' => [
+                'operation' => fn(float $firstNumber, float $secondNumber) => $firstNumber / $secondNumber,
+                'priority' => 2,
+            ],
+        ];
     }
 
     /**
@@ -48,7 +67,23 @@ class Calculator
                 $this->operandStack->push((float) $token);
                 break;
             case $this->isOperation($token):
-                $this->operatorStack->push($token);
+                if ($this->operatorStack->isEmpty()) {
+                    $this->operatorStack->push($token);
+                    break;
+                }
+                //Операция, которая готовится попасть в стек
+                $currentOperation = $this->operations[$token];
+                //Предыдущий оператор, которая лежит в стеке
+                $previousOperator = $this->operatorStack->top();
+                //Проверить приоритет
+                $previousOperation = $this->operations[$previousOperator];
+
+                if ($previousOperation['priority'] > $currentOperation['priority']) {
+                    $this->operandStack->push($this->calculateLastOperation());
+                    $this->handleToken($token);
+                } else {
+                    $this->operatorStack->push($token);
+                }
                 break;
             case $token === "\n":
                 if ($this->operatorStack->isEmpty()) {
@@ -77,6 +112,6 @@ class Calculator
         $secondNumber = $this->operandStack->pop();
         $operation = $this->operatorStack->pop();
 
-        return $this->operations[$operation]($secondNumber, $firstNumber);
+        return $this->operations[$operation]['operation']($secondNumber, $firstNumber);
     }
 }
