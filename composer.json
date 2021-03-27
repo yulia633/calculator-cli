@@ -1,0 +1,37 @@
+{
+    "name": "yulia633/calculator-php",
+    "description": "A compiler called Egg",
+    "type": "project",
+    "keywords": [
+        "calculator",
+        "stack"
+    ],
+    "authors": [
+        {
+            "name": "yulia633,",
+            "email": "ignat633yulia@yandex.ru"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "src/Parsers.php"
+        ],
+        "psr-4": {
+            "App\\": "src",
+            "Tests\\": "tests"
+        }
+    },
+    "minimum-stability": "stable",
+    "scripts": {
+        "phpcs": "phpcs",
+        "phpunit": "phpunit"
+    },
+    "require": {
+        "php": ">=7.4.3"
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.5",
+        "phpunit/phpunit": "^9"
+    },
+    "license": "MIT"
+}
