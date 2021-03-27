@@ -18,11 +18,6 @@ class Calculator
         $this->operandStack = new \SplStack();
         $this->operatorStack = new \SplStack();
         $this->operations = [
-            '+' => fn(float $firstNumber, float $secondNumber) => $firstNumber + $secondNumber,
-            '-' => fn(float $firstNumber, float $secondNumber) => $firstNumber - $secondNumber,
-        ];
-
-        $this->operations = [
             '+' => [
                 'operation' => fn(float $firstNumber, float $secondNumber) => $firstNumber + $secondNumber,
                 'priority' => 1,
