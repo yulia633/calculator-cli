@@ -8,7 +8,7 @@ class Calculator
 {
     private \SplStack $operandStack;
     private \SplStack $operatorStack;
-    private array $operations;
+    private $operations;
 
     /**
      * @var array $validationData
@@ -44,7 +44,9 @@ class Calculator
     }
 
     /**
-     *  Лексический анализатор: разбивает строку.
+     * Лексический анализатор: разбивает строку.
+     * @param string $expression
+     * @return float
      */
     public function calculate(string $expression): float
     {
@@ -63,7 +65,9 @@ class Calculator
     }
 
     /**
-     *  Анализирует символы строки.
+     * Анализирует символы строки.
+     * @param string $token
+     * @return void
      */
     private function handleToken(string $token): void
     {
@@ -118,7 +122,9 @@ class Calculator
     }
 
     /**
-     *  Определяет операция это или нет.
+     * Определяет операция это или нет.
+     * @param string $token
+     * @return bool
      */
     private function isOperation(string $token): bool
     {
@@ -126,7 +132,8 @@ class Calculator
     }
 
     /**
-     *  Делает вычисление последней операции в стеке.
+     * Делает вычисление последней операции в стеке.
+     * @return float
      */
     private function calculateLastOperation(): float
     {
