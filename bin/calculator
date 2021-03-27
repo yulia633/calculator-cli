@@ -15,6 +15,9 @@ if (file_exists($autoloadPath1)) {
     require_once $autoloadPath2;
 }
 
-$expression = prompt("expression");
+line("Welcome to the Brain Games! \n");
+$name = prompt("May I have your name?");
+line("Hello, {$name}!");
+$expression = prompt("Print your expression");
 $result = (new Calculator())->calculate($expression);
-line($result);
+line("Your result: {$result}!");
