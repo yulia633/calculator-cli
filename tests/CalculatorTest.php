@@ -40,6 +40,10 @@ class CalculatorTest extends TestCase
                 '3 - 4 / 2',
                 1,
             ],
+            '3 - (4 + 2) * 4' => [
+                '3 - (4 + 2) * 4',
+                -21,
+            ],
         ];
     }
 }

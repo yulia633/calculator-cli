@@ -75,6 +75,12 @@ class Calculator
                 $currentOperation = $this->operations[$token];
                 //Предыдущий оператор, которая лежит в стеке
                 $previousOperator = $this->operatorStack->top();
+
+                //Проверить лежит ли скобка в стеке
+                if (!$this->isOperation($previousOperator)) {
+                    $this->operatorStack->push($token);
+                    break;
+                }
                 //Проверить приоритет
                 $previousOperation = $this->operations[$previousOperator];
 
@@ -84,6 +90,17 @@ class Calculator
                 } else {
                     $this->operatorStack->push($token);
                 }
+                break;
+            case $token === "(":
+                $this->operatorStack->push($token);
+                break;
+            case $token === ")":
+                if ($this->operatorStack->top() === "(") {
+                    $this->operatorStack->pop();
+                    break;
+                }
+                $this->operandStack->push($this->calculateLastOperation());
+                $this->handleToken($token);
                 break;
             case $token === "\n":
                 if ($this->operatorStack->isEmpty()) {
