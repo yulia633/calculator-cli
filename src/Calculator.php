@@ -39,7 +39,7 @@ class Calculator
     }
 
     /**
-     *  Анализирует значение.
+     *  Анализирует символы строки.
      */
     private function handleToken(string $token): void
     {
