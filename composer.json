@@ -12,6 +12,9 @@
             "email": "ignat633yulia@yandex.ru"
         }
     ],
+    "bin": [
+        "bin/calculator"
+    ],
     "autoload": {
         "psr-4": {
             "App\\": "src",
@@ -24,7 +27,8 @@
         "phpunit": "phpunit"
     },
     "require": {
-        "php": ">=7.4.3"
+        "php": ">=7.4.3",
+        "wp-cli/php-cli-tools": "^0.11.11"
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.5",
