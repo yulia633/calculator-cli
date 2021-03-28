@@ -5,7 +5,7 @@ validate:
 	composer validate
 
 lint:
-	composer exec -v phpcs -- --standard=PSR12 src tests -np
+	composer exec -v phpcs -- --standard=PSR12 src bin tests -np
 
 test:
 	composer exec -v phpunit tests
