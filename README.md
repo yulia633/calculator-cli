@@ -18,14 +18,11 @@
 * `make install`
 * `make test`
 
----
-
-Пример использования:
-
------
-#### CLI приложение:
+#### Пример использования CLI приложения:
 `$ bin/calculator`
 
 #### Для разработки:
 * PHP >=7.4
 * Composer
+* Codesniffer
+* Phpunit
