@@ -1,3 +1,7 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/0410e3af8840126b99ef/maintainability)](https://codeclimate.com/github/yulia633/calculator-cli/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/0410e3af8840126b99ef/test_coverage)](https://codeclimate.com/github/yulia633/calculator-cli/test_coverage)
+![linter and tests](https://github.com/yulia633/calculator-cli/workflows/linter%20and%20tests/badge.svg)
+
 # Простой калькулятор CLI
 
 ### О коде
