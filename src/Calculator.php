@@ -82,7 +82,7 @@ class Calculator
                 }
                 //Операция, которая готовится попасть в стек
                 $currentOperation = $this->operations[$token];
-                //Предыдущий оператор, которая лежит в стеке
+                //Предыдущий оператор, который лежит в стеке
                 $previousOperator = $this->operatorStack->top();
 
                 //Проверить лежит ли скобка в стеке
@@ -160,9 +160,10 @@ class Calculator
      /**
      * Печатает сообщение
      * @param string $msg
+     * @return void
      */
     protected function print(string $msg): void
     {
-        echo $msg . PHP_EOL;
+        echo $msg . "\n";
     }
 }
